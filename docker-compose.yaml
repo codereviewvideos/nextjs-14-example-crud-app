@@ -1,0 +1,15 @@
+version: "3.7"
+
+services:
+  db:
+    container_name: nextjs-example-crud-app-db
+    image: postgres:16-alpine
+    ports:
+      - "5684:5432"
+    environment:
+      POSTGRES_DB: app_db
+      POSTGRES_USER: app_user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - "./db/volumes/pgdata:/var/lib/postgresql/data"
+    command: [ "postgres", "-c", "log_statement=all" ]
